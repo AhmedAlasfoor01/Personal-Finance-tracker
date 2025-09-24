@@ -13,6 +13,12 @@ const MongoStore = require("connect-mongo");
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 
+//Models (declaring the models in the server.js)
+const user = require("/models/user")
+
+const Account =require("/models/Account");
+
+const Transcation = require("/models/Transcation")
 // Controllers
 const authController = require('./controllers/auth.js');
 
@@ -44,6 +50,9 @@ app.use(
   })
 );
 app.use(passUserToView);
+
+
+
 
 // PUBLIC
 app.get('/', (req, res) => {
