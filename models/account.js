@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');//This page for creating the Database of the account 
 
 
 
@@ -7,10 +7,7 @@ const AccountSchema = new mongoose.Schema({
     type: Object ,
     required: true,
   },
-  _Id: {
-    type: Object,
-    required: true,
-  },
+
 Account_Name: {
     type: String ,
     required: true,

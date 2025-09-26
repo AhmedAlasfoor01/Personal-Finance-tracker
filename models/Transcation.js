@@ -1,16 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');//This page for creating the database for the transcation 
 
 
 
-const AccountSchema = new mongoose.Schema({
+const TranscationSchema = new mongoose.Schema({
   User_Id: {
     type: Object ,
     required: true,
   },
-  _Id: {
-    type: Object,
-    required: true,
-  },
+  
   Account_Id: {
     type: Object ,
     required: true,
