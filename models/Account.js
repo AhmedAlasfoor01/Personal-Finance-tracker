@@ -26,6 +26,6 @@ Account_Name: {
   },
 
 });
-const User = mongoose.model('Account', AccountSchema);
+const Account = mongoose.model('Account', AccountSchema);
 
 module.exports = Account;

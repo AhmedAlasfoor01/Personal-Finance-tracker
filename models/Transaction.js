@@ -2,7 +2,7 @@ const mongoose = require('mongoose');//This page for creating the database for t
 
 
 
-const TranscationSchema = new mongoose.Schema({
+const TransactionSchema = new mongoose.Schema({
   User_Id: {
     type: Object ,
     required: true,
@@ -32,6 +32,6 @@ Category: {
   
 
 });
-const User = mongoose.model('Account', AccountSchema);
+const Transaction = mongoose.model('Transaction', TransactionSchema);
 
-module.exports = Account;
+module.exports = Transaction;

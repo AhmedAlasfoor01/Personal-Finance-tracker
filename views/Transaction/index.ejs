@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Transcation</title>
+    <title>All Transaction</title>
 </head>
 <body>
     <%- include('../partials/nav') %> */ It will help us so not every time we to add it 
-    <h1><%=All Transcation%></h1>
-     <a href="/Transcation/new">Add a new Transcation </a>
+    <h1><%=All Transaction%></h1>
+     <a href="/Transaction/new">Add a new Transaction </a>
+      <ul>
+        <%=Transaction.forEach((Transaction)=>{%
+            <li>
+                
+            </li>
+        })
+      </ul>
 </body>
 </html>

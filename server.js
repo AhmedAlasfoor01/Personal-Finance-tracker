@@ -13,14 +13,16 @@ const MongoStore = require("connect-mongo");
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 
-//Models (declaring the models in the server.js)
-const user = require("/models/user")
+//
 
-const Account =require("/models/Account");
 
-const Transcation = require("/models/Transcation")
 // Controllers
-const authController = require('./controllers/auth.js');
+const authController = require('./controller/auth.js');
+
+const AccountController = require('./controller/Account.js');
+
+const TranscationController = require('./controller/Transcation.js');
+
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT ? process.env.PORT : '3000';
@@ -32,7 +34,7 @@ mongoose.connection.on('connected', () => {
 });
 
 // MIDDLEWARE
-//
+
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
 // Middleware for using HTTP verbs such as PUT or DELETE
@@ -59,7 +61,13 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+
+
 app.use('/auth', authController);
+
+app.use('/Transcation', TranscationController);
+
+app.use('/Account', AccountController);
 
 // PROTECTED
 
