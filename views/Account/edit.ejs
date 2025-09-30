@@ -6,10 +6,10 @@
     <title>Edit <%= Account.name %></title>
 </head>
 <body>
-     <%- include('../partials/nav') %> */ It will help us so not every time we to add it 
+     <%- include('../partials/_navbar') %> */ It will help us so not every time we to add it 
 
     <h1><%=Edit a Account%></h1>
-    <form action="/Account<%=Account_.id%>?_method=PUT" method="put"></form>
+    <form action="/Account<%=Account_.id%>?_method=PUT" method="post">
 
           <label for="accountName">Account Name:</label>
       <input type="text" name="accountName" id="accountName" value="<%= Account.accountName %>"/>
@@ -23,6 +23,6 @@
       <label for="accountNumber">Account Number:</label>
       <input type="number" name="accountNumber" id="accountNumber" value="<%= Account.accountNumber %>"/>
       <button type="submit">Edit Account</button>
-
+</form>
 </body>
 </html>

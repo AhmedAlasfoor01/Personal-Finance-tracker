@@ -21,7 +21,7 @@ const authController = require('./controller/auth.js');
 
 const AccountController = require('./controller/Account.js');
 
-const TranscationController = require('./controller/Transcation.js');
+const TransactionController = require('./controller/Transaction.js');
 
 
 // Set the port from environment variable or default to 3000
@@ -65,15 +65,13 @@ app.get('/', (req, res) => {
 
 app.use('/auth', authController);
 
-app.use('/Transcation', TranscationController);
-
-app.use('/Account', AccountController);
+app.use(isSignedIn)
 
 // PROTECTED
 
-app.get("/vip-lounge", isSignedIn, (req, res) => {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-});
+app.use('/Transaction', TransactionController);
+
+app.use('/Account', AccountController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

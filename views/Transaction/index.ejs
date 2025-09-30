@@ -1,4 +1,4 @@
-<!DOCTYPE html>  <!--This page to show all the transcations of the users -->
+<!DOCTYPE html>  <!--This page to show all the Transactions of the users -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,11 +10,25 @@
     <h1><%=All Transaction%></h1>
      <a href="/Transaction/new">Add a new Transaction </a>
       <ul>
-        <%=Transaction.forEach((Transaction)=>{%
+        <%Transaction.forEach((Transaction)=>{%
+           <div> <%=Transaction.name%></div>
             <li>
-                
+                <% Transaction.forEach((account) => { %>
+    <div class="transaction-box">
+      <h4><%= transaction.transactionName %></h4>
+      <div class="transaction-details">
+       
+        <span>Transaction Details: <%= transaction.transactiondetails %></span>
+        <span>Transaction Date: <%= transaction.transactionDate %></span>
+         <span>Creation Date: <%= transaction.creationDate %></span>
+          <span>Type: <%= transaction.transactionType %></span>
+      </div>
+      <button>View Details</button>
+    </div>
+  <% }); %>
+</div>
             </li>
-        })
+        })%>
       </ul>
 </body>
 </html>

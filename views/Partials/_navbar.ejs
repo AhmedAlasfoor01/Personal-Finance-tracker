@@ -1,14 +1,11 @@
 <nav>
-    <%= if (user){%>
+    <% if (user) { %>
         <a href="/Transaction">View All Transaction </a>
         <a href="/Account">View All Accounts </a>
         <a href="/auth/sign-out">Sign-Out </a>
-    <%}else {%>
+    <% } else { %>
     <a href="/auth/sign-in">Sign-In </a>
 
     <a href="/auth/sign-up">Sign-Up</a>
-    %>}%>
-    
-
-
+    <% } %>
 </nav>

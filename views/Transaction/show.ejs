@@ -1,11 +1,67 @@
-<!DOCTYPE html><!--This page for showing only one transcation -->
+<!DOCTYPE html><!--This page for showing only one Transaction -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Transactions</title>
 </head>
 <body>
     
+        
+        <h1>All My Transactions</h1>
+        <a href="/transactions/new" class="btn btn-success">Add New Transaction</a>
+
+
+    <hr>
+    
+    
+    <% if (transactions.length === 0) { %>
+        <p>You haven't recorded any transactions yet.</p>
+        <a href="/transactions/new" class="btn btn-success">Add Your First Transaction</a>
+    <% } else { %>
+    
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Account</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <% transactions.forEach(transaction => { %>
+                    <tr>
+                        <td><%= new Date(transaction.transactionDate).toDateString() %></td>
+                        <td><%= transaction.description || 'No description' %></td>
+                        <td><%= transaction.accountId.accountName %></td>
+                        <td><%= transaction.category %></td>
+                        <td>
+                            <span class="<%= transaction.amount >= 0 ? 'text-success' : 'text-danger' %>">
+                                $<%= transaction.amount %>
+                            </span>
+                        </td>
+                        <td>
+                        
+                            <a href="/transactions/<%= transaction._id %>" class="btn btn-sm btn-primary">View</a>
+                            <a href="/transactions/<%= transaction._id %>/edit" class="btn btn-sm btn-secondary">Edit</a>
+                            <form style="display:inline;" action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn btn-sm btn-danger" 
+                                        onclick="return confirm('Delete this transaction?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+    
+   
+    <a href="/dashboard" class="btn btn-outline-secondary">Back to Dashboard</a>
+</div>
 </body>
 </html>

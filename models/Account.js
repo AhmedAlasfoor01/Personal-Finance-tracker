@@ -3,28 +3,26 @@ const mongoose = require('mongoose');//This page for creating the Database of th
 
 
 const AccountSchema = new mongoose.Schema({
-  User_Id: {
-    type: Object ,
-    required: true,
-  },
-
-Account_Name: {
+  accountName: {
     type: String ,
     required: true,
   },
-  Account_Type: {
+  accountType: {
     type: String,
     required: true,
   },
-  Balance: {
+  balance: {
     type: Number,
     required: true,
   },
-  Account_Number: {
-    type: String,
+  accountNumber: {
+    type: Number,
     required: true,
   },
-
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 const Account = mongoose.model('Account', AccountSchema);
 

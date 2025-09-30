@@ -7,21 +7,33 @@
 </head>
 <body>
     <%- include('../partials/nav') %> */ It will help us so not every time we to add it 
-     <a href="/Account/new">Add a new Transcation </a>
+     <a href="/Account/new.ejs">Add a Account </a>
       <ul>
         <%Account.forEach((Account)=>{%
             <li>
-                
+                <% Account.forEach((account) => { %>
+    <div class="account-box">
+      <h4><%= account.accountName %></h4>
+      <div class="account-details">
+        <span>Balance: $<%= account.balanceNumber %></span>
+        <span>Number: $<%= account.accountNumber %></span>
+        <span>Type: <%= account.accountType %></span>
+        <span>Last Transaction: <%= account.lastTransaction %></span>
+      </div>
+      <button>View Details</button>
+    </div>
+  <% }); %>
+</div>
             </li>
         })
       </ul>
    
 
-
+ 
 
 
     </form>
-    <a href="/Account/new.ejs">Add a Account </a>
+   
 
 </body>
 </html>

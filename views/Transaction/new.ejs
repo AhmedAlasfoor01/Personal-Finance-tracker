@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--This page to create the transcation form of the user -->
+<!DOCTYPE html><!--This page to create the Transaction form of the user -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,5 +8,20 @@
 <body>
     <%- include('../partials/nav') %> */ It will help us so not every time we to add it 
     <h1><%=Add a new Transaction%></h1>
+
+    <label for="transactiondetails">Transaction Details:</label>
+      <input type="text" name="transactiondetails" id="transactiondetails" value="<%= Transaction.transactiondetails %>"/>
+
+      <label for="creationDate">Creation Date:</label>
+      <input type="date" name="creationDate" id="creationDate" value="<%= Transaction.creationDate %>"/>
+
+      <label for="transactionDate">Transaction Date:</label>
+      <input type="datetime" name="transactionDate" id="transactionDate" value="<%= Transaction.transactionDate %>"/>
+
+      <select name="transactionType" id="transactionType">
+        <option value="income">Income</option>
+        <option value="outcome">Outcome</option>
+      </select>
+      <button type="submit">Add a new Transaction</button>
 </body>
 </html>
