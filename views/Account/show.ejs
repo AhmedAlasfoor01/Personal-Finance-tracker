@@ -61,9 +61,14 @@
             </tbody>
         </table>
     <% } %>
+
     
     <a href="/accounts" class="btn btn-outline-secondary">Back to All Accounts</a>
 </div>
+<form action="/accounts/<%= account._id %>?_method=DELETE" method="POST" style="display: inline;">
+  <button type="submit" onclick="return confirm('Delete this account?')">Delete</button>
+</form>
+
 
 </body>
 </html>

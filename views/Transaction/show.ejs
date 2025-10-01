@@ -53,6 +53,9 @@
                                 <button type="submit" class="btn btn-sm btn-danger" 
                                         onclick="return confirm('Delete this transaction?')">Delete</button>
                             </form>
+                            <form action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST" style="display: inline;">
+                         <button type="submit" onclick="return confirm('Delete this transaction?')">Delete</button>
+                        </form>
                         </td>
                     </tr>
                 <% }) %>
