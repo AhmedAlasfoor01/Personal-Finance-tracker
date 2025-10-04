@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');//This page for creating the database for the Transaction 
 const Account = require('./Account.js');
-const User = require('./user.js');
+const User = require('./User.js');
 
 
 const TransactionSchema = new mongoose.Schema({
-  accountId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Account",
-  },
   category: {
     type: String,
     required: true,
@@ -27,6 +23,10 @@ const TransactionSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  accountId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Account",
   },
 });
 const Transaction = mongoose.model('Transaction', TransactionSchema);

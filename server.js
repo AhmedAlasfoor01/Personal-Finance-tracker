@@ -19,9 +19,9 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 // Controllers
 const authController = require('./controller/auth.js');
 
-const AccountController = require('./controller/Account.js');
+const accountController = require('./controller/account.js');
 
-const TransactionController = require('./controller/Transaction.js');
+const transactionController = require('./controller/transaction.js');
 
 
 // Set the port from environment variable or default to 3000
@@ -34,7 +34,7 @@ mongoose.connection.on('connected', () => {
 });
 
 // MIDDLEWARE
-
+app.use(express.static('stylesheet'));
 // Middleware to parse URL-encoded data from forms
 app.use(express.urlencoded({ extended: false }));
 // Middleware for using HTTP verbs such as PUT or DELETE
@@ -69,9 +69,9 @@ app.use(isSignedIn)
 
 // PROTECTED
 
-app.use('/Transaction', TransactionController);
+app.use('/transactions', transactionController);
 
-app.use('/Account', AccountController);
+app.use('/accounts', accountController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

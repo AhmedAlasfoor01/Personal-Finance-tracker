@@ -1,0 +1,30 @@
+<!DOCTYPE html><!--To show All accounts  of the user -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All accounts</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/_navbar') %> 
+     <a href="/accounts/new">Add a Account </a>
+      <ul>
+        <% populatedAccounts.forEach((account)=>{ %>
+          <li>
+            <div class="account-box">
+              <h4><%= account.accountName %></h4>
+
+              <div class="account-details">
+                <span>Balance: $<%= account.balance %></span>
+                <span>Number: $<%= account.accountNumber %></span>
+                <span>Type: <%= account.accountType %></span>
+              </div>
+              
+              <button><a href="/accounts/<%= account._id %>">View Details</a></button>
+            </div>
+          </li>
+        <% }); %>
+      </ul>
+</body>
+</html>

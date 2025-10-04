@@ -1,0 +1,47 @@
+<!DOCTYPE html><!--This page for showing only one Transaction -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transactions</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Transaction Details</h1>
+        <div class="card-body">
+            <h5>Transaction Details</h5>
+            <p><strong>Category:</strong> <%= transaction.category %></p>
+            <p><strong>Amount:</strong> <%= transaction.amount %></p>
+            <p><strong>Details:</strong> $<%= transaction.details %></p>
+            <p><strong>Date:</strong> $<%= transaction.transactionDate %></p>
+            <% if (transaction.accountNumber) { %>
+                <p><strong>Account :</strong> **<%= transaction.accountNumber %></p>
+            <% } %>
+        </div>
+    </div>
+    <div class="actions">
+        <a href="/transactions/<%= transaction._id %>/edit" class="btn btn-edit">Edit</a>
+        <form action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-delete">Delete</button>
+        </form>
+        <a href="/transactions" class="btn btn-back">Back to Transactions</a>
+    </div>
+   
+    
+      
+    </div>
+    
+    <hr>
+    
+    
+    
+
+    
+    <a href="/accounts" class="btn btn-outline-secondary">Back to All Accounts</a>
+</div>
+
+
+  
+</body>
+</html>

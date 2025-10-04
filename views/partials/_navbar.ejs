@@ -1,7 +1,8 @@
 <nav>
+    <link rel="stylesheet" href="/css/style.css">
     <% if (user) { %>
-    <a href="/views/Account">View all Accounts</a>
-     <a href="/views/Transaction">View all Transactions</a>
+    <a href="/accounts">View all Accounts</a>
+     <a href="/transactions">View all Transactions</a>
     <a href="/auth/sign-out">Sign Out</a>
     <%} else { %>
     <a href="/auth/sign-up">Sign Up</a>

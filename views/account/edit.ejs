@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= account.name %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+     <%- include('../partials/_navbar') %> 
+    <h1>Edit <%= account.name %></h1>
+    <form action="/accounts/<%=account._id%>?_method=PUT" method="post">
+
+        <label for="accountName">Account Name:</label>
+        <input type="text" name="accountName" id="accountName" value="<%= account.accountName %>"/>
+
+        <label for="accountType">Account Type:</label>
+        <input type="text" name="accountType" id="accountType" value="<%= account.accountType %>"/>
+
+        <label for="balanceNumber">Balance Number:</label>
+        <input type="number" name="balance" id="balanceNumber" value="<%= account.balance %>"/>
+
+        <label for="accountNumber">Account Number:</label>
+        <input type="number" name="accountNumber" id="accountNumber" value="<%= account.accountNumber %>"/>
+        <button type="submit">Edit Account</button>
+    </form>
+</body>
+</html>

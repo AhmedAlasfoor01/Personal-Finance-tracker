@@ -1,0 +1,40 @@
+<!DOCTYPE html>  <!--This page to show all the Transactions of the users -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Transaction</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+      <%- include('../partials/_navbar') %> 
+      <h1>All Transaction</h1>
+      <a href="/transactions/new">Add a new Transaction </a>
+
+
+        <ul>
+          <%populatedTransactions.forEach((transaction)=>{%>
+            <div> <%=transaction.name%></div>
+            
+              <li>
+      <div class="transaction-box">
+        <h4><%= transaction.transactionName %></h4>
+
+
+
+          <div class="transaction-details">
+            <span>Transaction Details: <%= transaction.transactiondetails %></span>
+            <span>Transaction Date: <%= transaction.transactionDate %></span>
+            <span>Creation Date: <%= transaction.creationDate %></span>
+              <span>Type: <%= transaction.transactionType %></span>
+          </div>
+          <button><a href="/transactions/<%=transaction._id%>">View Details</a> </button>
+          </div>
+          <% }); %>
+          </div>
+          </li>
+          </ul>
+
+
+  </body>
+  </html>

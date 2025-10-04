@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <%- include('./partials/_navbar') %> 
   <% if (user) { %>
-    
-    <h1>Welcome to your Finnace Hub, <%= user.username %>!</h1>
+    <h1>Welcome to your Finance Hub, <%= user.username %>!</h1>
 <p>
   <a href="/auth/sign-out">Sign out</a>
 </p>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><!--This page to create the Transaction form of the user -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new Transaction</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../partials/_navbar') %>
+    <h1>Add a new Transaction</h1>
+     <form action="/transactions" method="post">
+    <label for="details">Transaction Details:</label>
+      <input type="text" name="details" id="details" />
+
+      <label for="creationDate">Creation Date:</label>
+      <input type="date" name="creationDate" id="creationDate" />
+
+      <label for="transactionDate">Transaction Date:</label>
+      <input type="datetime" name="transactionDate" id="transactionDate" />
+
+      <select name="category" id="category">
+        <option value="income">Income</option>
+        <option value="outcome">Outcome</option>
+      </select>
+      <label for="amount">Amount:</label>
+      <input type="number" name="amount" id="amount" />
+      <button type="submit">Add a new Transaction</button>
+      </form>
+</body>
+</html>
