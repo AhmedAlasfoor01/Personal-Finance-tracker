@@ -31,7 +31,7 @@ router.get("/new",async(req,res)=>{ //for the transaction to add new\
 //create
 router.post("/", async (req, res) => {
   try {
-    req.body.user = req.session.user._id;
+    req.body.accountId = req.session.accountId._id;
     await Transaction.create(req.body);
     console.log(req.body);
     res.redirect("/transactions");

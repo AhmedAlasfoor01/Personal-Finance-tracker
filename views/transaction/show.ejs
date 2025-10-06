@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="card">
-        <h1>Transaction Details</h1>
         <div class="card-body">
             <h5>Transaction Details</h5>
             <p><strong>Category:</strong> <%= transaction.category %></p>
@@ -20,12 +19,12 @@
             <% } %>
         </div>
     </div>
-    <div class="actions">
-        <a href="/transactions/<%= transaction._id %>/edit" class="btn btn-edit">Edit</a>
-        <form action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST" style="display: inline;">
-            <button type="submit" class="btn btn-delete">Delete</button>
+    <a href="/transactions/<%= transaction._id %>/edit" class="btn btn-primary">Edit This Transaction</a>
+        <a href="/transactions/new" class="btn btn-success">Add Transaction</a>
+        <form style="display:inline;" action="/transactions/<%= transaction._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger" 
+                    onclick="document.getElementById('message').textContent='Deleting transaction...'; deleteTransaction();">Delete Transaction</button>
         </form>
-        <a href="/transactions" class="btn btn-back">Back to Transactions</a>
     </div>
    
     
