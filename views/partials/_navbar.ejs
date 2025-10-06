@@ -1,11 +1,11 @@
 <nav>
-    <link rel="stylesheet" href="/css/style.css">
     <% if (user) { %>
-    <a href="/accounts">View all Accounts</a>
-     <a href="/transactions">View all Transactions</a>
-    <a href="/auth/sign-out">Sign Out</a>
-    <%} else { %>
-    <a href="/auth/sign-up">Sign Up</a>
-    <a href="/auth/sign-in">Sign In</a>
+        <a href="/Transaction">View All Transaction </a>
+        <a href="/Account">View All Accounts </a>
+        <a href="/auth/sign-out">Sign-Out </a>
+    <% } else { %>
+    <a href="/auth/sign-in">Sign-In </a>
+
+    <a href="/auth/sign-up">Sign-Up</a>
     <% } %>
 </nav>
