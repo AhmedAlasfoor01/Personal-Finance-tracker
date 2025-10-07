@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const Transaction= require("../models/Transaction");
-const User = require("../models/User")
+const Transaction = require("../models/Transaction");
+const User = require("../models/User");
 
 // Index
 router.get("/", async (req,res)=>{ // so we can get all the transaction from our database
