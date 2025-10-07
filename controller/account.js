@@ -141,10 +141,15 @@ router.delete('/:accountId', async (req, res) => {
         const populatedAccount = await Account.findById(
           req.params.accountId
         ).populate("owner");
+
+        if(populatedAccount.owner.equals(req.session.user._id)){
+          res.render("/account/show.ejs",{account});
+        }else{
+          console.log("Permission Denied - not your account");
+          res.redirect("/accounts")
+        }
         
-        res.render("account/show.ejs", {
-          account: populatedAccount,
-        });
+        
       } catch (error) {
         console.log(error);
         res.redirect("/");

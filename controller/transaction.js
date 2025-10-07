@@ -131,11 +131,15 @@ router.get("/:transactionId", async (req, res) => {
   try {
     const populatedTransaction = await Transaction.findById(//we used populated so it's give us full data of the transaction 
       req.params.transactionId
-    ).populate("User");
+    ).populate("user");
+     if(populatedTransaction.user.equals(req.session.user._id)){
+          res.render("/transaction/show.ejs",{transaction:populatedTransaction});
+        }else{
+          console.log("Permission Denied - not your transaction");
+          res.redirect("/transaction");
+        }
 
-    res.render("transactions/show.ejs", {
-      transaction: populatedTransaction,
-    });
+    
   } catch (error) {
     console.log(error);
     res.redirect("/");
