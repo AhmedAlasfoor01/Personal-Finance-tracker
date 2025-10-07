@@ -62,10 +62,10 @@ app.get('/', (req, res) => {
 });
 
 
-
+app.use(isSignedIn)
 app.use('/auth', authController);
 
-app.use(isSignedIn)
+
 
 // PROTECTED
 
