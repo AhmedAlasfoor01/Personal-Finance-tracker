@@ -5,16 +5,18 @@ const Transaction = require("../models/Transaction");
 const User = require("../models/User");
 
 // Index
-router.get("/", async (req,res)=>{ // so we can get all the transaction from our database
+router.get("/", async (req, res) => { 
   try {
-    const populatedTransactions = await Transaction.find({ user: req.session.user._id }).populate("accountId").populate("user")
-    console.log(populatedTransactions)
-    res.render("transaction/index.ejs",{populatedTransactions}) ;
+    const populatedTransactions = await Transaction.find({}).populate("account");
+    console.log(populatedTransactions);
+    res.render("transaction/index.ejs", { populatedTransactions });
   } catch(error) {
     console.log(error);
     res.redirect("/");
   }
 });
+
+
 
 
 //create form 
@@ -44,7 +46,7 @@ router.post("/", async (req, res) => {
 // Edit Form
 router.get("/:transactionId/edit", async (req, res) => {
   try {
-    const transaction = await Transaction.findById(req.params.accountId);
+    const transaction = await Transaction.findById(req.params.transactionId);
     
     if (!transaction) {
       console.log("Transaction not found");
@@ -100,15 +102,15 @@ router.put('/:transactionId', async (req, res) => {
 //Delete router 
 router.delete('/:transactiontId', async (req, res) => {
   try {
-    const transaction = await Transaction.findById(req.params.accountId);
+    const transaction = await Transaction.findById(req.params.transactiontId);
     
     if (!transaction) {
       console.log("Transaction not found");
-      return res.redirect("/transaction");
+      return res.redirect("/transactions");
     }
     
     // Check if the user owns this account
-    if (transaction.owner.equals(req.session.user._id)) {
+    if (transaction.user.equals(req.session.user._id)) {
       console.log("Permission granted - checking for associated transactions");
       
       
@@ -129,16 +131,16 @@ router.delete('/:transactiontId', async (req, res) => {
 
 router.get("/:transactionId", async (req, res) => {
   try {
-    const populatedTransaction = await Transaction.findById(//we used populated so it's give us full data of the transaction 
+    const populatedTransaction = await Transaction.findById(
       req.params.transactionId
-    ).populate("user");
-     if(populatedTransaction.user.equals(req.session.user._id)){
-          res.render("/transaction/show.ejs",{transaction:populatedTransaction});
-        }else{
-          console.log("Permission Denied - not your transaction");
-          res.redirect("/transaction");
-        }
-
+    ).populate("account");
+    
+     if (!transaction.user.equals(req.session.user._id)) {
+      console.log("Permission denied - not your transaction");
+      return res.redirect("/transactions");
+    }
+    
+    res.render("transaction/show.ejs", { transaction: populatedTransaction });
     
   } catch (error) {
     console.log(error);

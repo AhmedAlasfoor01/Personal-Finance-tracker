@@ -136,29 +136,24 @@ router.delete('/:accountId', async (req, res) => {
 });
     // Show
     router.get("/:accountId", async (req, res) => {
-  try {
-    const populatedAccount = await Account.findById(
-      req.params.accountId
-    ).populate("owner");
+      try {
+        const populatedAccount = await Account.findById(
+          req.params.accountId
+        ).populate("owner");
 
-    if (!populatedAccount) {
-      console.log("Account not found");
-      return res.redirect("/accounts");
-    }
-
-    // Check if user owns this account
-    if (populatedAccount.owner.equals(req.session.user._id)) {
-      res.render("account/show.ejs", { account: populatedAccount });
-    } else {
-      console.log("Permission Denied - not your account");
-      res.redirect("/accounts");
-    }
-    
-  } catch (error) {
-    console.log(error);
-    res.redirect("/");
-  }
-});
+        if(populatedAccount.owner.equals(req.session.user._id)){
+          res.render("/account/show.ejs",{account});
+        }else{
+          console.log("Permission Denied - not your account");
+          res.redirect("/accounts")
+        }
+        
+        
+      } catch (error) {
+        console.log(error);
+        res.redirect("/");
+      }
+    });
 
     
 module.exports = router;

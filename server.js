@@ -61,9 +61,9 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-
-app.use(isSignedIn)
 app.use('/auth', authController);
+app.use(isSignedIn)
+
 
 
 
