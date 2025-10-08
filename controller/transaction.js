@@ -7,8 +7,8 @@ const User = require("../models/User");
 // Index
 router.get("/", async (req, res) => { 
   try {
-    const populatedTransactions = await Transaction.find({}).populate("account");
-    console.log(populatedTransactions);
+    const populatedTransactions = await Transaction.find({user:req.session._id}).populate("account");
+    
     res.render("transaction/index.ejs", { populatedTransactions });
   } catch(error) {
     console.log(error);
@@ -117,10 +117,10 @@ router.delete('/:transactiontId', async (req, res) => {
           
           console.log("Deleting transaction");
           await transaction.deleteOne();
-          res.redirect("/transaction");
+          res.redirect("/transactions");
         } else {
           document.getElementById('message').textContent = "Permission denied - user does not own this transaction";
-          res.redirect("/transaction");
+          res.redirect("/transactions");
         }
       } catch (error) {
         console.log(error);
@@ -135,7 +135,7 @@ router.get("/:transactionId", async (req, res) => {
       req.params.transactionId
     ).populate("account");
     
-     if (!transaction.user.equals(req.session.user._id)) {
+     if (!populatedTransaction.user.equals(req.session.user._id)) {
       console.log("Permission denied - not your transaction");
       return res.redirect("/transactions");
     }

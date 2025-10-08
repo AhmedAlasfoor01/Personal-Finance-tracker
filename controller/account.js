@@ -6,8 +6,8 @@ const Account = require("../models/Account.js");
 // Index
 router.get("/", async (req,res)=>{ // so we can get all the transaction from our database
   try {
-    const populatedAccounts = await Account.find({}).populate("owner")
-    console.log(populatedAccounts)
+    const populatedAccounts = await Account.find({owner:req.session._id}).populate("owner")
+   
     res.render("account/index.ejs",{populatedAccounts}) ;
   } catch(error) {
     console.log(error);
@@ -78,7 +78,7 @@ router.put('/:accountId', async (req, res) => {
     }
     
     // Check if the user owns this account
-    if (account.owner.equals(req.session.user._id)) {
+    if (account.owner.equals(req.session.user._Id)) {
       console.log("Permission granted-updating the account ");
       await account.updateOne(req.body);
       
@@ -142,7 +142,7 @@ router.delete('/:accountId', async (req, res) => {
         ).populate("owner");
 
         if(populatedAccount.owner.equals(req.session.user._id)){
-          res.render("/account/show.ejs",{account});
+          res.render("/account/show.ejs",{owner:populatedAccount});
         }else{
           console.log("Permission Denied - not your account");
           res.redirect("/accounts")
