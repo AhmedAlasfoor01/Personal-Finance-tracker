@@ -6,7 +6,7 @@ const Account = require("../models/Account.js");
 // Index
 router.get("/", async (req,res)=>{ // so we can get all the transaction from our database
   try {
-    const populatedAccounts = await Account.find({owner:req.session.user_id}).populate("owner")
+    const populatedAccounts = await Account.find({owner:req.session.user._id}).populate("owner")
    
     res.render("account/index.ejs",{populatedAccounts}) ;
   } catch(error) {
