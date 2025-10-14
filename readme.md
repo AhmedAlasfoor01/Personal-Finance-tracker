@@ -94,3 +94,19 @@
 //Update Transaction Verify user is authenticated. Find transaction by ID. Verify transaction belongs to user. Get updated data from form. Store old amount. Update transaction with new data. Save to database. Calculate difference between new and old amount. Update account balance. Return updated transaction.
 
 //Delete Transaction Verify user is authenticated. Find transaction by ID. Verify transaction belongs to user. Store transaction amount. Find associated account. Update account balance by subtracting amount. Delete transaction from database. Return success message.
+
+//Technologies Used
+//Backend: Node.js, Express.js
+//Database: MongoDB with Mongoose ODM
+//Template Engine: EJS (Embedded JavaScript)
+//Authentication: express-session, bcrypt
+//Styling: Custom CSS
+
+//Future Enhancements
+//Dashboard with financial overview and charts
+//Budget limits and spending alerts
+//Export transactions to CSV
+//Recurring transactions for bills and salary
+//Mobile responsive design
+
+//The Name of the Project: Your Finance hub
